@@ -22,7 +22,7 @@ public class Alarm_activity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_activity);
 
-        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         mp = MediaPlayer.create(getApplicationContext(), notification);
         mp.start();
 
