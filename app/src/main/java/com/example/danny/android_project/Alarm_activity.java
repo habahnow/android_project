@@ -32,6 +32,8 @@ public class Alarm_activity extends ActionBarActivity{
         mp.stop();
         mp.release();
 
+        this.finish();
+
 
 
     }
@@ -51,6 +53,8 @@ public class Alarm_activity extends ActionBarActivity{
         //registering our pending intent with alarmmanager
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pi);
+
+        this.finish();
 
     }
 }
