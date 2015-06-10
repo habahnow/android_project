@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_red">
 
     <Space
         android:layout_width="match_parent"
@@ -12,7 +13,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textClock"
         android:textSize="80dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:textColor="@color/background_material_light"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -27,7 +29,9 @@
             android:id="@+id/snooze_button"
             android:layout_gravity="center"
             android:onClick="snooze"
-            android:textSize="50dp" />
+            android:textSize="50dp"
+            android:background="@color/background_material_dark"
+            android:textColor="@color/background_material_light"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -37,7 +41,9 @@
             android:layout_gravity="center"
             android:onClick="dismiss"
             android:textSize="50dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:background="@color/background_material_dark"
+            android:textColor="@color/background_material_light"/>
     </LinearLayout>
 
 </LinearLayout>

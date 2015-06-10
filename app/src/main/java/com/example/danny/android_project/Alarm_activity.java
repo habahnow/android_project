@@ -9,6 +9,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,6 +29,26 @@ public class Alarm_activity extends ActionBarActivity{
         mp = MediaPlayer.create(getApplicationContext(), notification);
         mp.start();
 
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        /*
+         Replaces the default 'Back' button action with a message so that the user can not
+         accidentally exit the alarm.
+        */
+        if(keyCode== KeyEvent.KEYCODE_BACK)
+        {
+            Context context = getApplicationContext();
+            CharSequence text = "Press either snooze or dismiss.";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        return true;
     }
 
     public void dismiss(View v){
