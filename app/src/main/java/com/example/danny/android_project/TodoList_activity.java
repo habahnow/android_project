@@ -26,8 +26,6 @@ public class TodoList_activity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        Toast.makeText(this, "Use The Menu Button to add a task", Toast.LENGTH_LONG).show();
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.todo_activity);
@@ -42,38 +40,7 @@ public class TodoList_activity extends ListActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.add_task:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Add a task");
-                builder.setMessage("What do you want to do?");
-                final EditText input = new EditText(this);
-                builder.setView(input);
-                builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String task = input.getText().toString();
-
-                        helper = new DBHelper(TodoList_activity.this);
-                        SQLiteDatabase db = helper.getWritableDatabase();
-                        ContentValues cv = new ContentValues();
-
-                        cv.clear();
-                        cv.put(Contract.Columns.TASK,task);
-
-                        db.insertWithOnConflict(Contract.TABLE_NAME,null,cv,SQLiteDatabase.CONFLICT_IGNORE);
-                        update();
-                    }
-                });
-
-                builder.setNegativeButton("Cancel",null);
-
-                builder.create().show();
-                return true;
-
-            default:
-                return false;
-        }
+     return true;
     }
 
     private void update() {
@@ -112,36 +79,39 @@ public class TodoList_activity extends ListActivity {
         update();
     }
 
-    public void AddTaskButtonClick(View view) {
+    public void AddButtonClick(View view) {
 
-        View v = (View) view.getParent();
-       final TextView taskTextView2 = (TextView) v.findViewById(R.id.add_task);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final EditText input = new EditText(this);
-        builder.setView(input);
-        builder.setTitle("Add a task");
-        builder.setMessage("What do you want to do?");
-        builder.setView(input);
-        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                String task = taskTextView2.getText().toString();
+        switch (R.id.add_task) {
+            case R.id.add_task:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Add a task");
+                builder.setMessage("What would you like to do?");
+                final EditText input = new EditText(this);
+                builder.setView(input);
+                builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String task = input.getText().toString();
 
-                helper = new DBHelper(TodoList_activity.this);
-                SQLiteDatabase db = helper.getWritableDatabase();
-                ContentValues cv = new ContentValues();
+                        helper = new DBHelper(TodoList_activity.this);
+                        SQLiteDatabase db = helper.getWritableDatabase();
+                        ContentValues cv = new ContentValues();
 
-                cv.clear();
-                cv.put(Contract.Columns.TASK,task);
+                        cv.clear();
+                        cv.put(Contract.Columns.TASK, task);
 
-                db.insertWithOnConflict(Contract.TABLE_NAME,null,cv,SQLiteDatabase.CONFLICT_IGNORE);
-                update();
-            }
-        });
+                        db.insertWithOnConflict(Contract.TABLE_NAME, null, cv, SQLiteDatabase.CONFLICT_IGNORE);
+                        update();
+                    }
+                });
 
-        builder.setNegativeButton("Cancel",null);
+                builder.setNegativeButton("Cancel", null);
 
-        builder.create().show();
+                builder.create().show();
+
+
+        }
+
 
     }
 

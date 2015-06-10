@@ -17,9 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Task"
-        android:id="@+id/add_task"
+        android:id="@+id/AddButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:onClick="AddTaskButtonClick"
-        />
+        android:onClick="AddButtonClick"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
