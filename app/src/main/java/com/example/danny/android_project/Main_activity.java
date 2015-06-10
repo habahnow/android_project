@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,18 +36,20 @@ public class Main_activity extends ActionBarActivity {
         am.set(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), pi);*/
 
         weatherbut=(Button) findViewById(R.id.weatherBut);
-        View.OnClickListener listener = new View.OnClickListener() {
+        weatherbut.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
+                Log.d("BUTTON", "PRESSED");
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 WeatherFragment hello = new WeatherFragment();
-                fragmentTransaction.add(R.id.fragment_container, hello, "HELLO");
+                fragmentTransaction.replace(R.id.fragment_container, hello);
                 fragmentTransaction.commit();
             }
-        };
-        weatherbut.setOnClickListener(listener);
+        });
+
 
     }
 

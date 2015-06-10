@@ -46,7 +46,8 @@ public class WeatherFragment extends Fragment {
     private TextView Temp;
     private TextView condition;
     private TextView conDescrip;
-    private TextView deg,deg1,deg2,maxLab,minLab;
+
+    private TextView deg,deg1,deg2,maxLab,minLab,minTemp,maxTemp;
     private ImageButton OWButton;
     URL picURL;
     Drawable d;
@@ -72,24 +73,26 @@ public class WeatherFragment extends Fragment {
         maxLab=(TextView) view.findViewById(R.id.maxLab);
         minLab=(TextView) view.findViewById(R.id.minLab);
         OWButton=(ImageButton) view.findViewById(R.id.weatherFrom);
+        minTemp=(TextView) view.findViewById(R.id.minTemp);
+        maxTemp=(TextView) view.findViewById(R.id.maxTemp);
 
         //hide all the text
-        //city.setVisibility(View.INVISIBLE);
-        WIcon.setVisibility(View.INVISIBLE);
-        Temp.setVisibility(View.INVISIBLE);
-        condition.setVisibility(View.INVISIBLE);
-        conDescrip.setVisibility(View.INVISIBLE);
+        city.setVisibility(View.GONE);
+        WIcon.setVisibility(View.GONE);
+        Temp.setVisibility(View.GONE);
+        condition.setVisibility(View.GONE);
+        conDescrip.setVisibility(View.GONE);
 
-        deg.setVisibility(View.INVISIBLE);
-        deg1.setVisibility(View.INVISIBLE);
-        deg2.setVisibility(View.INVISIBLE);
-        maxLab.setVisibility(View.INVISIBLE);
-        minLab.setVisibility(View.INVISIBLE);
+        deg.setVisibility(View.GONE);
+        deg1.setVisibility(View.GONE);
+        deg2.setVisibility(View.GONE);
+        maxLab.setVisibility(View.GONE);
+        minLab.setVisibility(View.GONE);
+        minTemp.setVisibility(View.GONE);
+        maxTemp.setVisibility(View.GONE);
 
 
-       LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10,locationListener);
-       startLoadTask(getActivity());
+
 
 
         OWButton.setOnClickListener(new View.OnClickListener() {
@@ -113,9 +116,12 @@ public class WeatherFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        //super.onCreate(savedInstanceState);
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 50000, 10,locationListener);
 
 
     }
@@ -251,8 +257,10 @@ public class WeatherFragment extends Fragment {
                 listview.setAdapter(tendayArrayAdapter);*/
                 city.setText(weather.getCity().getName());
                 Temp.setText(Double.toString(weather.getTemp().getcTemp()));
-                condition.setText(weather.getWeather().getDescrip());
+                condition.setText(weather.getWeather().getMainWeather());
                 conDescrip.setText(weather.getWeather().getDescrip());
+                minTemp.setText(Double.toString(weather.getTemp().getMinTemp()));
+                maxTemp.setText(Double.toString(weather.getTemp().getMaxTemp()));
 
                     WIcon.setBackground(d);
 
@@ -261,7 +269,8 @@ public class WeatherFragment extends Fragment {
                 Temp.setVisibility(View.VISIBLE);
                 condition.setVisibility(View.VISIBLE);
                 conDescrip.setVisibility(View.VISIBLE);
-
+                minTemp.setVisibility(View.VISIBLE);
+                maxTemp.setVisibility(View.VISIBLE);
                 deg.setVisibility(View.VISIBLE);
                 deg1.setVisibility(View.VISIBLE);
                 deg2.setVisibility(View.VISIBLE);
