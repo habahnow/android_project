@@ -1,23 +1,28 @@
 package com.example.danny.android_project;
 
 import android.app.AlarmManager;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.Calendar;
 
 
 public class Main_activity extends ActionBarActivity {
 
+    private Button weatherbut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        Intent i = new Intent(getApplicationContext(), Alarm_activity.class);
+        /*Intent i = new Intent(getApplicationContext(), Alarm_activity.class);
         PendingIntent pi = PendingIntent.getActivity(getApplicationContext(),3333,i,
                 PendingIntent.FLAG_CANCEL_CURRENT);
 
@@ -27,7 +32,22 @@ public class Main_activity extends ActionBarActivity {
 
         //registering our pending intent with alarmmanager
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), pi);
+        am.set(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), pi);*/
+
+        weatherbut=(Button) findViewById(R.id.weatherBut);
+        View.OnClickListener listener = new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                WeatherFragment hello = new WeatherFragment();
+                fragmentTransaction.add(R.id.fragment_container, hello, "HELLO");
+                fragmentTransaction.commit();
+            }
+        };
+        weatherbut.setOnClickListener(listener);
+
     }
 
     @Override
