@@ -2,6 +2,7 @@ package com.example.danny.android_project;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -46,9 +48,20 @@ public class Alarm_activity extends ActionBarActivity{
         PendingIntent pi = PendingIntent.getActivity(getApplicationContext(),333,i,
                 PendingIntent.FLAG_CANCEL_CURRENT);
 
-        //getting current time and add 5 seconds in it
+        //getting current time and add 2 seconds in it
+        //seconds should be set to the default or user set snooze value
+        int seconds = 2;
+
+        // display the snooze time, in minutes.
+        Context context = getApplicationContext();
+        CharSequence text = "Alarm snoozed for " + seconds / 60;
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.SECOND, 2);
+
+        cal.add(Calendar.SECOND, seconds);
 
         //registering our pending intent with alarmmanager
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
