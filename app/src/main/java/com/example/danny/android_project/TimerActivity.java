@@ -17,6 +17,7 @@ import java.util.Calendar;
  */
 public class TimerActivity extends Activity {
 
+
     private Button weatherBut, todoBut, alarmBut;
     private Button start;
     private Button stop;
@@ -24,6 +25,7 @@ public class TimerActivity extends Activity {
     EditText hourEditText;
     EditText minuteEditText;
     EditText secondEditText;
+
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -62,7 +64,7 @@ public class TimerActivity extends Activity {
         Intent intent = new Intent(this, AlarmActivity.class);
         PendingIntent pi= PendingIntent.getBroadcast(this, 0, intent, 0);
 
-        AlarmManager am = (AlarmManager) getSystemService(Con)
+        //AlarmManager am = (AlarmManager) getSystemService(Con)
 
     }
 }

@@ -3,19 +3,194 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/black"
+        android:layout_marginBottom="20dp"
+        android:paddingTop="10dp"
+        android:weightSum="1">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/alarmBut"
+            android:text="Alarm"
+            android:textColor="@color/white"
+            android:layout_weight=".1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/weatherBut"
+            android:text="Weather"
+            android:layout_weight=".25"
+            android:textColor="@color/white"
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/To_DoBut"
+            android:text="To-Do"
+            android:layout_weight=".25"
+            android:textColor="@color/white"
+            android:clickable="false"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TimerBut"
+            android:text="Time"
+            android:layout_weight=".35"
+            android:textColor="@color/button_red"
+            android:clickable="false"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_gravity="bottom"
+        android:paddingTop="150dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/hourLabBox">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HR"
+                android:id="@+id/HourLab"
+                android:textSize="30dp"
+                android:layout_alignBaseline="@+id/hour_edit_text"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number|none"
+            android:maxLength="2"
+            android:digits="0123456789"
+            android:textSize="40dp"
+            android:text="00"
+            android:id="@+id/hour_edit_text" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="40dp"
+            android:id="@+id/colon1"
+            android:layout_toRightOf="@id/hourLabBox"
+            android:layout_alignBottom="@id/hourLabBox"
+            android:paddingBottom="10dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/minLabBox">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MIN"
+                    android:id="@+id/minLab"
+                    android:textSize="30dp"
+                    android:layout_alignBaseline="@+id/hour_edit_text"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number|none"
+                    android:maxLength="2"
+                    android:digits="0123456789"
+                    android:textSize="40dp"
+                    android:text="00"
+                    android:id="@+id/minute_edit_text" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:id="@+id/colon2"
+                android:layout_toRightOf="@id/minLabBox"
+                android:layout_alignBottom="@id/minLabBox"
+                android:paddingBottom="10dp"
+                android:textSize="40dp"/>
+        </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/SecLabBox">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SEC"
+                    android:id="@+id/secLab"
+                    android:layout_alignBaseline="@+id/hour_edit_text"
+                    android:textSize="30dp"/>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number|none"
+                    android:maxLength="2"
+                    android:digits="0123456789"
+                    android:textSize="40dp"
+                    android:text="00"
+                    android:id="@+id/second_edit_text" />
+            </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal">
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:text="Start"
+    android:id="@+id/start"
+    android:layout_gravity="center_horizontal"
+        android:onClick="startTimer" />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView3"
+        android:text="Stop"
+        android:id="@+id/stop"
         android:layout_gravity="center_horizontal"
-        android:text="@string/timer_title" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_gravity="center_horizontal" />
+        android:onClick="stopTimer" />
 </LinearLayout>
+
+    </LinearLayout>
+
