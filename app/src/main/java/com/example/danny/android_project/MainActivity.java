@@ -1,33 +1,25 @@
 package com.example.danny.android_project;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-import java.util.Calendar;
 
-
-public class Main_activity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        Intent i = new Intent(getApplicationContext(), Alarm_activity.class);
-        PendingIntent pi = PendingIntent.getActivity(getApplicationContext(),3333,i,
-                PendingIntent.FLAG_CANCEL_CURRENT);
 
-        //getting current time and add 5 seconds in it
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.SECOND, 3);
 
-        //registering our pending intent with alarmmanager
-        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(), pi);
     }
 
     @Override
@@ -44,9 +36,21 @@ public class Main_activity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        //Open Settings fragment.
         if (id == R.id.action_settings) {
-            return true;
+
+            Context context = getApplicationContext();
+            CharSequence text = "Alarm snoozed for ";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.main_linear_layout, new SettingsFragment())
+                    .commit();
+
+
         }
 
         return super.onOptionsItemSelected(item);

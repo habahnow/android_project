@@ -18,7 +18,7 @@ import java.util.Calendar;
 /**
  * Created by danny on 5/22/15.
  */
-public class Alarm_activity extends ActionBarActivity{
+public class AlarmActivity extends ActionBarActivity{
     private MediaPlayer mp;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -65,7 +65,7 @@ public class Alarm_activity extends ActionBarActivity{
         mp.stop();
         mp.release();
 
-        Intent i = new Intent(getApplicationContext(), Alarm_activity.class);
+        Intent i = new Intent(getApplicationContext(), AlarmActivity.class);
         PendingIntent pi = PendingIntent.getActivity(getApplicationContext(),333,i,
                 PendingIntent.FLAG_CANCEL_CURRENT);
 

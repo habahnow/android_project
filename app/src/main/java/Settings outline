@@ -1,0 +1,27 @@
+change default alarm settings:
+  sound file: list name of current default file to play, when user clicks on it it should show a list of possible files to
+    play.(ensure that displaying as setting the sound file is modular since it will be used in other sections as well. )
+    save the name of the file in a database.
+  Snooze method: list out: pressing on screen button, pressing side buttons, solving math problems, minigame. Save the
+    set option into database.
+  Auto-snooze time: give the user the ability to set the time in which the alarm will automatically be snoozed.
+    Probably want to set a max time and ensure a pop up comes up if the auto-snooze occurs after the,  auto-dismiss.
+    Save the time in seconds in a database.
+  Time between snoozes: allows the user to set the time between snoozes. store in database as seconds.
+  Max number of snoozes: allows the user to set the number of snoozes. includes none.
+  Reduce time between snoozes by: reduces the time between each snooze. store in database as seconds.
+  Dismiss method: list out: similar to Snooze method
+  Auto-dismiss time: simlar to auto-snooze time.
+
+change default timer settings:
+  sound file
+  Snooze method
+  Auto-snooze time
+  Time between snoozes
+  Max number of snoozes
+  Reduce time between snoozes
+  Dismiss method
+  Auto-dismiss time
+  ###above are the same as alarm clock
+
+  timer: set in how long to set alarm

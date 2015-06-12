@@ -3,4 +3,7 @@
     <string name="dismiss">Dismiss</string>
     <string name="snooze">Snooze</string>
     <string name="action_settings">Settings</string>
+
+    <string name="check_box">Check BoxXXX</string>
+    <string name="summary"> this is the summary.Summary.</string>
 </resources>
