@@ -1,0 +1,8 @@
+<resources>
+    <color name = "button_normal"> #000000 </color>
+    <color name = "button_pressed"> #660000 </color>
+    <color name = "button_text"> #ffffff </color>
+    <color name = "background"> #171717 </color>
+    <color name = "text_view_background"> #4c4c4c </color>
+
+</resources>
