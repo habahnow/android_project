@@ -49,7 +49,7 @@ public class WeatherActivity extends Activity {
     private TextView conDescrip;
     private TextView deg, deg1, deg2, maxLab, minLab, minTemp, maxTemp;
 
-    private Button  todoBut, alarmBut;
+    private Button  todoBut, alarmBut, TimerBut;
 
     private ImageButton OWButton;
     URL picURL;
@@ -109,6 +109,7 @@ public class WeatherActivity extends Activity {
 
         todoBut = (Button) findViewById(R.id.To_DoBut);
         alarmBut = (Button) findViewById(R.id.alarmBut);
+        TimerBut = (Button) findViewById(R.id.TimerBut);
 
         todoBut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +127,17 @@ public class WeatherActivity extends Activity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(WeatherActivity.this, MainActivity.class); //like an envelope where it's starting then where its going to go.
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+            }
+        });
+        TimerBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(WeatherActivity.this, TimerActivity.class); //like an envelope where it's starting then where its going to go.
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
 
