@@ -2,5 +2,8 @@
 <resources>
     <color name="background_red">#D50F37</color>
     <color name="button_red">#950A26</color>
-
+    <color name="grey2">#E5E4E2</color>
+    <color name="black">#000000</color>
+    <color name="grey">#B0C4DE</color>
+    <color name="white">#FFFFFF</color>
 </resources>
