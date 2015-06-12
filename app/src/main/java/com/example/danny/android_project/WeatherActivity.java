@@ -1,5 +1,6 @@
 package com.example.danny.android_project;
 
+        import android.app.Activity;
         import android.content.Context;
         import android.content.Intent;
         import android.graphics.drawable.Drawable;
@@ -16,6 +17,8 @@ package com.example.danny.android_project;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
+        import android.view.Window;
+        import android.widget.Button;
         import android.widget.FrameLayout;
         import android.widget.ImageButton;
         import android.widget.ProgressBar;
@@ -33,18 +36,20 @@ package com.example.danny.android_project;
         import java.net.URL;
 
 
-public class WeatherActivity extends ActionBarActivity {
+public class WeatherActivity extends Activity {
 
     HttpURLConnection connection = null;
     private ProgressBar progressLoading;
-    WeatherJSONParse weather= new WeatherJSONParse(); //all of the weather data with
+    WeatherJSONParse weather = new WeatherJSONParse(); //all of the weather data with
 
     private TextView city;
     private FrameLayout WIcon;
     private TextView Temp;
     private TextView condition;
     private TextView conDescrip;
-    private TextView deg,deg1,deg2,maxLab,minLab,minTemp,maxTemp;
+    private TextView deg, deg1, deg2, maxLab, minLab, minTemp, maxTemp;
+
+    private Button  todoBut, alarmBut;
 
     private ImageButton OWButton;
     URL picURL;
@@ -53,7 +58,9 @@ public class WeatherActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.weather_layout);
+
 
         city = (TextView) findViewById(R.id.location);
         WIcon = (FrameLayout) findViewById(R.id.wIcon);
@@ -61,14 +68,14 @@ public class WeatherActivity extends ActionBarActivity {
         condition = (TextView) findViewById(R.id.mainWeather);
         conDescrip = (TextView) findViewById(R.id.weatherDes);
         progressLoading = (ProgressBar) findViewById(R.id.progressBar);
-        deg=(TextView) findViewById(R.id.degree);
-        deg1=(TextView) findViewById(R.id.degree2);
-        deg2=(TextView) findViewById(R.id.degree3);
-        maxLab=(TextView) findViewById(R.id.maxLab);
-        minLab=(TextView) findViewById(R.id.minLab);
-        OWButton=(ImageButton) findViewById(R.id.weatherFrom);
-        maxTemp=(TextView) findViewById(R.id.maxTemp);
-        minTemp=(TextView) findViewById(R.id.minTemp);
+        deg = (TextView) findViewById(R.id.degree);
+        deg1 = (TextView) findViewById(R.id.degree2);
+        deg2 = (TextView) findViewById(R.id.degree3);
+        maxLab = (TextView) findViewById(R.id.maxLab);
+        minLab = (TextView) findViewById(R.id.minLab);
+        OWButton = (ImageButton) findViewById(R.id.weatherFrom);
+        maxTemp = (TextView) findViewById(R.id.maxTemp);
+        minTemp = (TextView) findViewById(R.id.minTemp);
 
         //hide all the text
         city.setVisibility(View.GONE);
@@ -86,12 +93,12 @@ public class WeatherActivity extends ActionBarActivity {
         OWButton.setVisibility(View.GONE);
 
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 50000, 10,locationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 50000, 10, locationListener);
 
         OWButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "http://www.openweathermap.org/city/"+weather.getCity().getId();
+                String url = "http://www.openweathermap.org/city/" + weather.getCity().getId();
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
                 startActivity(i);
@@ -99,7 +106,35 @@ public class WeatherActivity extends ActionBarActivity {
             }
         });
 
+
+        todoBut = (Button) findViewById(R.id.To_DoBut);
+        alarmBut = (Button) findViewById(R.id.alarmBut);
+
+        todoBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(WeatherActivity.this, TodoList_activity.class); //like an envelope where it's starting then where its going to go.
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+            }
+        });
+        alarmBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(WeatherActivity.this, MainActivity.class); //like an envelope where it's starting then where its going to go.
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+            }
+        });
+
+
     }
+
     LocationListener locationListener = new LocationListener() {
         @Override
         //Get GPS Information here
@@ -124,7 +159,8 @@ public class WeatherActivity extends ActionBarActivity {
         public void onProviderDisabled(String provider) {
         }
     };
-    public void startLoadTask(Context c){
+
+    public void startLoadTask(Context c) {
         if (isOnline()) {
             LoadData task = new LoadData();
             task.execute();
@@ -132,12 +168,14 @@ public class WeatherActivity extends ActionBarActivity {
             Toast.makeText(c, "Not online", Toast.LENGTH_LONG).show();
         }
     }
+
     public boolean isOnline() {
         ConnectivityManager connectivityManager = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
     }
+
     private class LoadData extends AsyncTask<String, Long, Long> {
         HttpURLConnection connection = null;
 
@@ -154,15 +192,15 @@ public class WeatherActivity extends ActionBarActivity {
         }
 
         protected Long doInBackground(String... strings) {
-            String BASE_URL= "http://api.openweathermap.org/data/2.5/weather?lat=";
-            String BASE_URL2="&lon=";
-            String BASE_URL3="mode=json&units=imperial";
+            String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?lat=";
+            String BASE_URL2 = "&lon=";
+            String BASE_URL3 = "mode=json&units=imperial";
 
-            Log.d("Attempting","STARTING TO CONNECT");
+            Log.d("Attempting", "STARTING TO CONNECT");
 //
 
             try {
-                URL dataUrl = new URL(BASE_URL+weather.getCity().getLat()+BASE_URL2+weather.getCity().getLon()+BASE_URL3);
+                URL dataUrl = new URL(BASE_URL + weather.getCity().getLat() + BASE_URL2 + weather.getCity().getLon() + BASE_URL3);
                 Log.d("URL", BASE_URL + weather.getCity().getLat() + BASE_URL2 + weather.getCity().getLon() + BASE_URL3);
                 connection = (HttpURLConnection) dataUrl.openConnection();
                 connection.connect();
@@ -186,9 +224,9 @@ public class WeatherActivity extends ActionBarActivity {
                     //Log.d("AFTER PARSE", weather.getCity().getName());
 
                     //get icon
-                    picURL= new URL(weather.getWeather().getIcon_url());
-                    InputStream content = (InputStream)picURL.getContent();
-                    d = Drawable.createFromStream(content , "src");
+                    picURL = new URL(weather.getWeather().getIcon_url());
+                    InputStream content = (InputStream) picURL.getContent();
+                    d = Drawable.createFromStream(content, "src");
 
 
                     return 0l;
@@ -212,6 +250,7 @@ public class WeatherActivity extends ActionBarActivity {
             }
 
         }
+
         @Override
         protected void onPostExecute(Long result) {
             if (result != 1l) {
@@ -241,8 +280,6 @@ public class WeatherActivity extends ActionBarActivity {
                 OWButton.setVisibility(View.VISIBLE);
 
 
-
-
             } else {
                 Toast.makeText(WeatherActivity.this, "AsyncTask didn't complete", Toast.LENGTH_LONG).show();
             }
@@ -250,26 +287,5 @@ public class WeatherActivity extends ActionBarActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
 

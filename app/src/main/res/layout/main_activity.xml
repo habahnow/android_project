@@ -4,6 +4,40 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/black"
+        android:layout_marginBottom="20dp"
+        android:paddingTop="10dp"
+        android:weightSum="1">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/alarmBut"
+            android:text="Alarm"
+            android:layout_weight=".3"
+            android:clickable="false"
+            android:textColor="@color/button_red"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/weatherBut"
+            android:text="Weather"
+            android:layout_weight=".3"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/To_DoBut"
+            android:text="To-Do list"
+            android:layout_weight=".4"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

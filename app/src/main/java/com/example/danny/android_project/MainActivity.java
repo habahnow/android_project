@@ -1,5 +1,6 @@
 package com.example.danny.android_project;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -9,21 +10,49 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
 
-    @Override
+public class MainActivity extends Activity {
+
+
+    private Button WeatherBut, TodoBut;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        WeatherBut = (Button) findViewById(R.id.weatherBut);
+        TodoBut = (Button) findViewById(R.id.To_DoBut);
+
+        WeatherBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(MainActivity.this, WeatherActivity.class); //like an envelope where it's starting then where its going to go.
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+            }
+        });
+        TodoBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, TodoList_activity.class); //like an envelope where it's starting then where its going to go.
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+            }
+        });
 
 
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_alarm_activity, menu);
@@ -55,5 +84,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }
