@@ -9,7 +9,7 @@ import android.widget.Button;
  */
 public class TimerActivity extends Activity {
 
-    private Button weatherBut, todoBut;
+    private Button weatherBut, todoBut,alarmBut;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
