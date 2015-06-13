@@ -6,9 +6,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -32,10 +34,25 @@ public class TimerActivity extends Activity {
         setContentView(R.layout.timer_layout);
         weatherBut = (Button) findViewById(R.id.weatherBut);
         todoBut = (Button) findViewById(R.id.To_DoBut);
+        start = (Button) findViewById(R.id.start);
+        stop= (Button) findViewById(R.id.stop);
 
         hourEditText = (EditText) findViewById(R.id.hour_edit_text);
         minuteEditText = (EditText) findViewById(R.id.minute_edit_text);
         secondEditText = (EditText) findViewById(R.id.second_edit_text);
+
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startTimer(view);
+                Log.d("START","PRESSED");
+
+            }
+        });
+
+
+
 
     }
 

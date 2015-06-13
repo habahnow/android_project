@@ -27,6 +27,7 @@
         <activity android:name=".AlarmActivity"
             />
         <activity android:name=".TodoList_activity"/>
+        <activity android:name=".TimerActivity"/>
     </application>
 
 </manifest>

@@ -11,7 +11,7 @@ package com.example.danny.android_project;
         import android.net.NetworkInfo;
         import android.net.Uri;
         import android.os.AsyncTask;
-        import android.support.v7.app.ActionBarActivity;
+
         import android.os.Bundle;
         import android.util.Log;
         import android.view.Menu;
@@ -136,13 +136,15 @@ public class WeatherActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-
                 Intent intent = new Intent(WeatherActivity.this, TimerActivity.class); //like an envelope where it's starting then where its going to go.
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
 
             }
         });
+
+
+
 
 
     }
