@@ -38,6 +38,16 @@
             android:layout_weight=".4"
             android:textColor="@color/button_red"
             android:clickable="false"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TimerBut"
+            android:text="Timer"
+            android:layout_weight=".4"
+            android:textColor="@color/white"
+
+            />
     </LinearLayout>
 
     <ListView

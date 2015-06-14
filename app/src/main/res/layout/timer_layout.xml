@@ -83,7 +83,8 @@
             android:digits="0123456789"
             android:textSize="40dp"
             android:text="00"
-            android:id="@+id/hour_edit_text" />
+            android:id="@+id/hour_edit_text"
+            android:imeOptions="actionNext"/>/>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
@@ -122,7 +123,8 @@
                     android:digits="0123456789"
                     android:textSize="40dp"
                     android:text="00"
-                    android:id="@+id/minute_edit_text" />
+                    android:id="@+id/minute_edit_text"
+                    android:imeOptions="actionNext"/>/>
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -160,7 +162,8 @@
                     android:digits="0123456789"
                     android:textSize="40dp"
                     android:text="00"
-                    android:id="@+id/second_edit_text" />
+                    android:id="@+id/second_edit_text"
+                    android:imeOptions="actionDone"/>
             </LinearLayout>
 
 

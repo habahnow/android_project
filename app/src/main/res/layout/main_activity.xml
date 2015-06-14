@@ -17,9 +17,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/alarmBut"
             android:text="Alarm"
-            android:layout_weight=".3"
-            android:clickable="false"
-            android:textColor="@color/button_red"/>
+            android:textColor="@color/button_red"
+            android:layout_weight=".10"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,14 +26,23 @@
             android:text="Weather"
             android:layout_weight=".3"
             android:textColor="@color/white"
-            />
+            android:clickable="false"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/To_DoBut"
             android:text="To-Do list"
+            android:layout_weight=".4"
             android:textColor="@color/white"
-            android:layout_weight=".4"/>
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TimerBut"
+            android:text="Timer"
+            android:layout_weight=".4"
+            android:textColor="@color/white"
+            />
     </LinearLayout>
 
 
