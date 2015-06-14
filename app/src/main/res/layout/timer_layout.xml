@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/TimerBut"
-            android:text="Time"
+            android:text="Timer"
             android:layout_weight=".35"
             android:textColor="@color/button_red"
             android:clickable="false"
@@ -84,7 +84,8 @@
             android:textSize="40dp"
             android:text="00"
             android:id="@+id/hour_edit_text"
-            android:imeOptions="actionNext"/>/>
+            android:imeOptions="actionNext"
+            android:selectAllOnFocus="true"/>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
@@ -124,7 +125,8 @@
                     android:textSize="40dp"
                     android:text="00"
                     android:id="@+id/minute_edit_text"
-                    android:imeOptions="actionNext"/>/>
+                    android:imeOptions="actionNext"
+                    android:selectAllOnFocus="true"/>
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -163,7 +165,8 @@
                     android:textSize="40dp"
                     android:text="00"
                     android:id="@+id/second_edit_text"
-                    android:imeOptions="actionDone"/>
+                    android:imeOptions="actionDone"
+                    android:selectAllOnFocus="true"/>
             </LinearLayout>
 
 
