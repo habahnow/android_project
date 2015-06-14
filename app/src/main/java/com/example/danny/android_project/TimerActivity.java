@@ -57,23 +57,43 @@ public class TimerActivity extends Activity {
     }
 
     public void startTimer(View v){
-        int hour = Integer.parseInt(hourEditText.getText().toString());
-        int minute = Integer.parseInt(minuteEditText.getText().toString());
-        int second= Integer.parseInt(secondEditText.getText().toString());
+        int hours = Integer.parseInt(hourEditText.getText().toString());
+        int minutes = Integer.parseInt(minuteEditText.getText().toString());
+        int seconds= Integer.parseInt(secondEditText.getText().toString());
 
-        int totalSeconds = second;
+        int totalSeconds = seconds;
 
-        totalSeconds +=  minute * 60;
-        totalSeconds += hour * 60 * 60;
+        totalSeconds +=  minutes * 60;
+        totalSeconds += hours * 60 * 60;
+
+        Intent i = new Intent(getApplicationContext(), AlarmActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(getApplicationContext(),333,i,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+
+        //getting current time and add 2 seconds in it
+        //seconds should be set to the default or user set snooze value
+
+        // display the snooze time, in minutes.
+        Context context = getApplicationContext();
+
+        int displayMinutes = seconds / 60;
+        int displaySeconds = seconds % 60;
+        displayMinutes += minutes % 60;
+        int displayHours = minutes
+
+        CharSequence text = "Alarm set for: " +  hour;
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
         Calendar cal = Calendar.getInstance();
 
         cal.add(Calendar.SECOND, totalSeconds);
 
-        Intent intent = new Intent(this, AlarmActivity.class);
-        PendingIntent pi= PendingIntent.getBroadcast(this, 0, intent, 0);
-        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis() , pi);
+        //registering our pending intent with alarmmanager
+        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pi);
 
     }
 

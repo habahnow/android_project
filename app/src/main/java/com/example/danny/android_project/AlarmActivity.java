@@ -1,5 +1,6 @@
 package com.example.danny.android_project;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -18,7 +19,7 @@ import java.util.Calendar;
 /**
  * Created by danny on 5/22/15.
  */
-public class AlarmActivity extends ActionBarActivity{
+public class AlarmActivity extends Activity {
     private MediaPlayer mp;
 
     protected void onCreate(Bundle savedInstanceState){
