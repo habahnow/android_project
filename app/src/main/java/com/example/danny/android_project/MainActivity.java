@@ -19,7 +19,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 
-    private Button WeatherBut, TodoBut;
+    private Button WeatherBut, TodoBut, TimerBut;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,17 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(MainActivity.this, TodoList_activity.class); //like an envelope where it's starting then where its going to go.
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+            }
+        });
+
+        TimerBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, TimerActivity.class); //like an envelope where it's starting then where its going to go.
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
 
