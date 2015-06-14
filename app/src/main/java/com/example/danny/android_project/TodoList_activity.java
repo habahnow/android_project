@@ -24,7 +24,7 @@ import android.widget.Toast;
 public class TodoList_activity extends ListActivity {
     public ListAdapter listAdapter;
     public DBHelper helper;
-    private Button weatherBut,alarmBut;
+    private Button weatherBut,alarmBut, TimerBut;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -50,6 +50,17 @@ public class TodoList_activity extends ListActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(TodoList_activity.this,MainActivity.class); //like an envelope where it's starting then where its going to go.
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+            }
+        });
+
+        TimerBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(TodoList_activity.this, TimerActivity.class); //like an envelope where it's starting then where its going to go.
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
 

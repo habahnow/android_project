@@ -35,7 +35,8 @@ public class TimerActivity extends Activity {
         weatherBut = (Button) findViewById(R.id.weatherBut);
         todoBut = (Button) findViewById(R.id.To_DoBut);
         start = (Button) findViewById(R.id.start);
-        stop= (Button) findViewById(R.id.stop);
+        stop = (Button) findViewById(R.id.stop);
+        todoBut = (Button) findViewById(R.id.To_DoBut);
 
         hourEditText = (EditText) findViewById(R.id.hour_edit_text);
         minuteEditText = (EditText) findViewById(R.id.minute_edit_text);
@@ -46,7 +47,42 @@ public class TimerActivity extends Activity {
             public void onClick(View view) {
 
                 startTimer(view);
-                Log.d("START","PRESSED");
+
+            }
+        });
+
+        weatherBut = (Button) findViewById(R.id.weatherBut);
+
+        alarmBut=(Button) findViewById(R.id.alarmBut);
+        weatherBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(TimerActivity.this,WeatherActivity.class); //like an envelope where it's starting then where its going to g
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+            }
+        });
+        alarmBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(TimerActivity.this,MainActivity.class); //like an envelope where it's starting then where its going to go.
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+            }
+        });
+
+        todoBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(TimerActivity.this, TodoList_activity.class); //like an envelope where it's starting then where its going to go.
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
 
             }
         });
@@ -82,10 +118,21 @@ public class TimerActivity extends Activity {
         int displayHours = minutes / 60;
         displayHours += hours;
 
-        CharSequence text = "Alarm set for: " +  hours + ":" + minutes + ":" + seconds;
+        StringBuilder sb = new StringBuilder("Alarm set to go off in: ");
+
+        if (displayHours > 0){
+            sb.append(displayHours + "h:");
+        }
+        if (displayMinutes > 0){
+            sb.append(displayMinutes + "m:");
+        }
+        if (displaySeconds > 0){
+            sb.append(displaySeconds + "s");
+        }
+
         int duration = Toast.LENGTH_LONG;
 
-        Toast toast = Toast.makeText(context, text, duration);
+        Toast toast = Toast.makeText(context, sb.toString(), duration);
         toast.show();
 
         Calendar cal = Calendar.getInstance();
