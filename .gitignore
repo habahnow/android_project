@@ -1,7 +1,13 @@
 .gradle
+/build
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
-/build
 /captures
+
+#newly added ignores
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/datasources.xml
+.idea/dataSources.ids
