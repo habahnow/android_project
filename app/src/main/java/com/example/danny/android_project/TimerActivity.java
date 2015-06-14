@@ -79,9 +79,10 @@ public class TimerActivity extends Activity {
         int displayMinutes = seconds / 60;
         int displaySeconds = seconds % 60;
         displayMinutes += minutes % 60;
-        int displayHours = minutes
+        int displayHours = minutes / 60;
+        displayHours += hours;
 
-        CharSequence text = "Alarm set for: " +  hour;
+        CharSequence text = "Alarm set for: " +  hours + ":" + minutes + ":" + seconds;
         int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(context, text, duration);
@@ -98,10 +99,22 @@ public class TimerActivity extends Activity {
     }
 
     public void stopTimer(View v){
-        Intent intent = new Intent(this, AlarmActivity.class);
-        PendingIntent pi= PendingIntent.getBroadcast(this, 0, intent, 0);
+//       Recreates the pending intent in order to cancel it.
 
-        //AlarmManager am = (AlarmManager) getSystemService(Con)
+        Intent i = new Intent(getApplicationContext(), AlarmActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 333, i,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+
+        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+        am.cancel(pi);
+
+        Context context = getApplicationContext();
+
+        CharSequence text = "Timer Cancelled.";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
     }
 }
