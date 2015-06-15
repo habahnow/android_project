@@ -208,7 +208,7 @@ public class WeatherActivity extends Activity {
         protected Long doInBackground(String... strings) {
             String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?lat=";
             String BASE_URL2 = "&lon=";
-            String BASE_URL3 = "mode=json&units=imperial";
+            String BASE_URL3 = "&mode=json&units=imperial";
 
             Log.d("Attempting", "STARTING TO CONNECT");
 //
@@ -245,6 +245,8 @@ public class WeatherActivity extends Activity {
 
                     return 0l;
                 } else {
+
+
                     return 1l;
                 }
             } catch (MalformedURLException e) {
@@ -295,7 +297,10 @@ public class WeatherActivity extends Activity {
 
 
             } else {
-                Toast.makeText(WeatherActivity.this, "AsyncTask didn't complete", Toast.LENGTH_LONG).show();
+                condition.setText("Service Unavailable");
+                condition.setVisibility(View.VISIBLE);
+                OWButton.setVisibility(View.VISIBLE);
+                //Toast.makeText(WeatherActivity.this, "AsyncTask didn't complete", Toast.LENGTH_LONG).show();
             }
             progressLoading.setVisibility(View.GONE);
         }
