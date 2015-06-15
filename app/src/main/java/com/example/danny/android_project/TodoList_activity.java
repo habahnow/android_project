@@ -24,7 +24,7 @@ import android.widget.Toast;
 public class TodoList_activity extends ListActivity {
     public ListAdapter listAdapter;
     public DBHelper helper;
-    private Button weatherBut,alarmBut, TimerBut;
+    private Button weatherBut,alarmBut, timerBut;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -35,6 +35,8 @@ public class TodoList_activity extends ListActivity {
         weatherBut = (Button) findViewById(R.id.weatherBut);
 
         alarmBut=(Button) findViewById(R.id.alarmBut);
+        timerBut = (Button) findViewById(R.id.TimerBut);
+
         weatherBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +58,7 @@ public class TodoList_activity extends ListActivity {
             }
         });
 
-        TimerBut.setOnClickListener(new View.OnClickListener() {
+        timerBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

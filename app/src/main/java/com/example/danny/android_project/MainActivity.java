@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main_activity);
         WeatherBut = (Button) findViewById(R.id.weatherBut);
         TodoBut = (Button) findViewById(R.id.To_DoBut);
+        TimerBut = (Button) findViewById(R.id.TimerBut);
 
         WeatherBut.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,9 +33,9 @@ public class TimerActivity extends Activity {
         setContentView(R.layout.timer_layout);
         weatherBut = (Button) findViewById(R.id.weatherBut);
         todoBut = (Button) findViewById(R.id.To_DoBut);
+        alarmBut=(Button) findViewById(R.id.alarmBut);
         start = (Button) findViewById(R.id.start);
         stop = (Button) findViewById(R.id.stop);
-        todoBut = (Button) findViewById(R.id.To_DoBut);
 
         hourEditText = (EditText) findViewById(R.id.hour_edit_text);
         minuteEditText = (EditText) findViewById(R.id.minute_edit_text);
@@ -51,9 +50,8 @@ public class TimerActivity extends Activity {
             }
         });
 
-        weatherBut = (Button) findViewById(R.id.weatherBut);
 
-        alarmBut=(Button) findViewById(R.id.alarmBut);
+
         weatherBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,7 +66,7 @@ public class TimerActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(TimerActivity.this,MainActivity.class); //like an envelope where it's starting then where its going to go.
+                Intent intent = new Intent(TimerActivity.this, MainActivity.class); //like an envelope where it's starting then where its going to go.
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
 
